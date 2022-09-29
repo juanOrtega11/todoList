@@ -1,10 +1,7 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
-const TodoContext = React.createContext();
-
-function TodoProvider(props) {
+function useTodos(props) {
 	const {
 		item: todos,
 		saveItem: saveTodos,
@@ -48,26 +45,20 @@ function TodoProvider(props) {
 		newTodos.splice(todoIndex, 1);
 		saveTodos(newTodos);
 	};
-	return (
-		<TodoContext.Provider
-			value={{
-				error,
-				loading,
-				totalTodos,
-				completedTodos,
-				searchValue,
-				setSearchValue,
-				searchedTodos,
-				completeTodo,
-				deleteTodo,
-				openModal,
-				setOpenModal,
-				addTodo,
-			}}
-		>
-			{props.children}
-		</TodoContext.Provider>
-	);
+	return {
+		error,
+		loading,
+		totalTodos,
+		completedTodos,
+		searchValue,
+		setSearchValue,
+		searchedTodos,
+		completeTodo,
+		deleteTodo,
+		openModal,
+		setOpenModal,
+		addTodo,
+	};
 }
 
-export { TodoContext, TodoProvider };
+export { useTodos };
