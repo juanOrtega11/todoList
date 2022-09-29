@@ -20,5 +20,5 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: ['react'],
-	rules: {},
+	rules: 'eslint-disable react/prop-types',
 };
